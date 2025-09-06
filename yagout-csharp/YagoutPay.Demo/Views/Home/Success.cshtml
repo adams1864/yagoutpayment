@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Payment Success";
+    var details = ViewBag.Details as IDictionary<string,string> ?? new Dictionary<string,string>();
+    string v(string k) => details.TryGetValue(k, out var val) ? val : "";
+    var userMsg = ViewBag.UserMessage as string ?? "Payment success";
+}
+<div style="max-width:720px;margin:40px auto;font-family:system-ui,Segoe UI,Arial,sans-serif;">
+  <div style="border:1px solid #d1e7dd;background:#d1e7dd33;border-radius:8px;padding:16px;">
+    <h2 style="margin:0 0 6px 0;color:#0f5132;">Success</h2>
+    <p style="margin:0;color:#0f5132;">@userMsg</p>
+  </div>
+  <div style="margin-top:16px;border:1px solid #eee;border-radius:8px;padding:12px;">
+    <div><strong>Order No:</strong> @v("order_no")</div>
+    <div><strong>Amount:</strong> @v("amount")</div>
+    <div><strong>Date:</strong> @v("date_time")</div>
+    <div><strong>Status:</strong> @v("status")</div>
+  </div>
+</div>

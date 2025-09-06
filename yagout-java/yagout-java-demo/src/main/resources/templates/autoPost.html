@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirecting…</title>
+  </head>
+  <body>
+    <p>Redirecting to YagoutPay…</p>
+    <form th:action="${action}" method="POST" id="f">
+      <div th:each="e : ${fields}">
+        <input type="hidden" th:name="${e.key}" th:value="${e.value}" />
+      </div>
+    </form>
+    <script>
+      document.getElementById('f').submit();
+    </script>
+  </body>
+</html>

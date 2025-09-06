@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Pay";
+    var orderNo = ViewBag.OrderNo as string ?? "ORD-1001";
+}
+<div style="max-width:720px;margin:40px auto;font-family:system-ui,Segoe UI,Arial,sans-serif;">
+  <h2 style="margin-bottom:8px;">YagoutPay Demo</h2>
+  <p style="color:#555;margin-top:0;">Hosted Checkout form</p>
+  <form method="post" action="/pay" style="display:grid;gap:12px;background:#fff;border:1px solid #eee;border-radius:8px;padding:16px;">
+    <label>Order No
+      <input name="order_no" value="@orderNo" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;" />
+    </label>
+    <label>Amount
+      <input name="amount" value="100.00" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;" />
+    </label>
+    <label>Email (optional)
+      <input name="email_id" placeholder="buyer@example.com" style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;" />
+    </label>
+    <label>Mobile (optional)
+      <input name="mobile_no" placeholder="+2519..." style="width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;" />
+    </label>
+    <button type="submit" style="background:#0d6efd;color:#fff;border:none;padding:10px 14px;border-radius:6px;cursor:pointer;">Pay</button>
+  </form>
+</div>

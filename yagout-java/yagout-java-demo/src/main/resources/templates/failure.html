@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Payment Failed</title>
+    <style>
+      :root {
+        --card-border: #dc2626;
+        --btn-bg: #991b1b;
+        --btn-bg-hover: #7f1d1d;
+        --text: #0f172a;
+        --muted: #475569;
+      }
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; color: var(--text); background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%); }
+      .wrap { max-width: 480px; margin: 48px auto; padding: 0 14px; }
+      .tab { display: block; width: 100%; box-sizing: border-box; background: white; border: 2px solid var(--card-border); border-bottom: none; border-radius: 12px 12px 0 0; padding: 10px 14px; font-weight: 650; }
+      .card { background: white; border: 2px solid var(--card-border); border-top: none; border-radius: 0 0 12px 12px; padding: 18px; box-shadow: 0 8px 24px rgba(2,6,23,.08); }
+      .summary-list { list-style: none; padding: 0; margin: 0 0 18px 0; }
+      .summary-list li { margin-bottom: 8px; font-size: 16px; }
+      .fail { color: #dc2626; font-size: 1.3em; font-weight: 700; margin-bottom: 10px; }
+      .actions { display: flex; }
+      .btn { background: var(--btn-bg); color: white; border: none; padding: 14px 18px; border-radius: 10px; font-size: 16px; cursor: pointer; width: 100%; transition: background-color .2s ease, transform .06s ease, box-shadow .2s ease; }
+      .btn:hover { background: var(--btn-bg-hover); box-shadow: 0 8px 18px rgba(220,38,38,.25); }
+      .btn:active { transform: translateY(1px); }
+      .muted { color: var(--muted); margin-bottom: 12px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="tab">Payment Status</div>
+      <div class="card">
+        <div class="fail">Payment Failed</div>
+        <div th:if="${userMessage}" style="margin-bottom:12px;font-size:1.1em;color:var(--text);" th:text="${userMessage}"></div>
+        <div class="muted">Sorry, we were unable to process your transaction.</div>
+        <ul class="summary-list">
+          <li th:if="${details['order_no']}" ><strong>Order No:</strong> <span th:text="${details['order_no']}"></span></li>
+          <li th:if="${details['amount']}"   ><strong>Amount:</strong> <span th:text="${details['amount']}"></span></li>
+          <li th:if="${details['date_time']}" ><strong>Date &amp; Time:</strong> <span th:text="${details['date_time']}"></span></li>
+          <li th:if="${details['status']}"   ><strong>Status:</strong> <span th:text="${details['status']}"></span></li>
+        </ul>
+        <div class="actions">
+          <a href="/" class="btn">Retry</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

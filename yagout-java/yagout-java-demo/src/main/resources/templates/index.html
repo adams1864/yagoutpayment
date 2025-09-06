@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo Checkout</title>
+    <style>
+      :root { --card-border:#2563eb; --btn-bg:#2563eb; --btn-bg-hover:#1d4ed8; --text:#0f172a; --muted:#64748b; }
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; color:var(--text); background:linear-gradient(180deg,#f8fafc 0%,#eef2f7 100%); }
+      .wrap { max-width: 420px; margin: 60px auto; padding: 0 14px; }
+      .tab { display:block; width:100%; background:white; border:2px solid var(--card-border); border-bottom:none; border-radius:12px 12px 0 0; padding:10px 14px; font-weight:650; font-size:1.1em; }
+      .card { background:white; border:2px solid var(--card-border); border-top:none; border-radius:0 0 12px 12px; padding:24px 22px 18px 22px; box-shadow:0 8px 24px rgba(2,6,23,.08); }
+      .form-group { margin-bottom:18px; }
+      label { display:block; font-weight:500; margin-bottom:6px; color:var(--muted); }
+      input[type="text"], input[type="email"], input[type="number"] { width:100%; padding:10px 12px; border:1.5px solid #cbd5e1; border-radius:7px; font-size:1em; background:#f8fafc; }
+      .btn { background:var(--btn-bg); color:white; border:none; padding:14px 18px; border-radius:10px; font-size:16px; cursor:pointer; width:100%; }
+      .btn:hover { background:var(--btn-bg-hover); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="tab">Demo Checkout</div>
+      <div class="card">
+        <form action="/pay" method="POST" autocomplete="off">
+          <div class="form-group">
+            <label for="order_no">Order No</label>
+            <input type="text" name="order_no" id="order_no" th:value="${orderNo}" required />
+          </div>
+          <div class="form-group">
+            <label for="amount">Amount (ETB)</label>
+            <input type="number" name="amount" id="amount" value="1.00" min="1" step="0.01" required />
+          </div>
+          <div class="form-group">
+            <label for="email_id">Email</label>
+            <input type="email" name="email_id" id="email_id" value="test@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="mobile_no">Mobile</label>
+            <input type="text" name="mobile_no" id="mobile_no" value="0912345678" required />
+          </div>
+          <button type="submit" class="btn">Pay with YagoutPay</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+@{
+    Layout = null;
+    var action = ViewBag.Action as string ?? "";
+    var fields = ViewBag.Fields as IDictionary<string,string> ?? new Dictionary<string,string>();
+}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting…</title>
+</head>
+<body>
+  <p>Redirecting to payment page…</p>
+  <form id="f" method="post" action="@action">
+    @foreach (var kv in fields)
+    {
+      <input type="hidden" name="@kv.Key" value="@kv.Value" />
+    }
+  </form>
+  <script>document.getElementById('f').submit();</script>
+</body>
+</html>
